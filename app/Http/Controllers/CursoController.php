@@ -30,22 +30,22 @@ class CursoController extends Controller
         //creamos un objeto y llenamos con datos recibidos, descartamos el token
         $curso=new Curso();
         $curso->nombre = $request->nombre;
+        $curso->slug = $request->slug;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
         
         $curso->save(); //grabamos en la bd
 
-        return redirect()->route('cursos.show', $curso->id); //se puede omitir el id y laravel lo hace solo
+        return redirect()->route('cursos.show', $curso); //se puede omitir el id y laravel lo hace solo
     }
 
-    public function show($id){
+    public function show(Curso $curso){
         //return view('cursos.show', ['curso' => $curso]); es la forma tradicional de pasar parámetro a la vista también válida
-        $curso=Curso::find($id); //buscamos el curso deseado para obtener la info
+        //$curso=Curso::find($id); //buscamos el curso deseado para obtener la info
         return view('cursos.show', compact('curso'));   
     }
 
-    public function edit($id){
-         $curso = Curso::find($id);
+    public function edit(Curso $curso){
          return view('cursos.edit', compact('curso'));
     }
 
@@ -62,12 +62,13 @@ class CursoController extends Controller
 
         //al objeto recibido lo llenamos con nuevos datos
         $curso->nombre = $request->nombre;
+        $curso->slug = $request->slug;
         $curso->descripcion = $request->descripcion;
         $curso->categoria=$request->categoria;
 
         $curso->save();
         
-        return redirect()->route('cursos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso);
     } 
 
     public function destroy(Curso $curso){

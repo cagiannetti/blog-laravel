@@ -17,6 +17,10 @@
     @enderror
     <br>
     
+    <label>
+        Slug:<br>
+        <input type="text" name="slug" value="{{old('slug')}}"><br>
+    </label>
     
     <label>
         Descripción:<br>

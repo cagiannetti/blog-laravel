@@ -11,13 +11,17 @@
     <label>
         Nombre:<br>
         <input type="text" name="nombre" value="{{old('nombre', $curso->nombre)}}"><br><!-- //el old con 2 parámetros es para cuando edito por primera vez ó cuando el formulario es enviado con errores-->
-
     </label>
 
     @error('nombre')
         <small>*{{$message}}</small><br>
     @enderror
     <br>
+
+    <label>
+        Slug:<br>
+        <input type="text" name="slug" value="{{old('slug', $curso->slug)}}"><br>
+    </label>
 
     <label>
         Descripción:<br>

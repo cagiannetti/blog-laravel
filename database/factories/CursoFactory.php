@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Curso;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str; //es un helper que sirve para generar Slugs que se utilizarán en las URL amigables
 
 class CursoFactory extends Factory
 {
@@ -21,8 +22,11 @@ class CursoFactory extends Factory
      */
     public function definition()
     {
+        $name=$this->faker->sentence();
+
         return [
-            'nombre' => $this->faker->sentence(),
+            'nombre' => $name,
+            'slug' => Str::slug($name, '-'),
             'descripcion' => $this->faker->paragraph(),
             'categoria' => $this->faker->randomElement(['Desarrollo web', 'Diseño Web'])
         ];
