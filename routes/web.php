@@ -15,7 +15,8 @@ use App\Http\Controllers\CursoController;
 |
 */
 
-Route::get('/', HomeController::class); //accede por defecto al metodo __invoke
+Route::get('/', HomeController::class)->name('home'); //accede por defecto al metodo __invoke
+Route::view('nosotros', 'nosotros')->name('nosotros'); //muestra contenido estático o sea una vista sin BD
 
 // Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index'); //el name es un alias que se puede utilizar para hacer referencia en lugar de escribir la ruta, se recomienda utilizar los mismos nombres que en vistas y métodos en controladores
 // Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
